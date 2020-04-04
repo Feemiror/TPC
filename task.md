@@ -12,7 +12,7 @@
 * NICE to support comparison of selected records/columns;
 * NICE to provide an exportable comparison report in table like format (marking discrepancies);
 
-#Constraints
+# Constraints
 * As base for data to be compared, use https://public.opendatasoft.com/explore/dataset/titanic-passengers/api/
 * You can use any data processing libraries, there is no need to code everything from ground up;
 * Don't use libraries which are exclusively data comparators, but you could list them as alternative solutions for extra points.

@@ -8,7 +8,7 @@ Project is created with Python >= 3.6<br>
 To run this library locally, simply clone this repo to a local directory and consider setting up a virtual environment using [venv](https://docs.python.org/3/library/venv.html):
 
 ```
- $ python venv venv
+ $ python -m venv venv
  $ venv\Scriptis\activate.bat
  $ (venv) python --install -r requirements.txt
 ```

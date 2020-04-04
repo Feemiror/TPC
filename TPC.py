@@ -1,13 +1,12 @@
 import argparse
 import pandas as pd
-from pandas import json_normalize
 import os
 import json
 import requests
+import builtins
 from csv import Sniffer, DictWriter
 from collections import Counter
 from tablib import Dataset
-import builtins
 from numpy import isclose
 from copy import copy
 
@@ -160,7 +159,7 @@ def load_json_data(json_data):
     '''
     Normalize json from API.
     '''
-    expected_df = json_normalize(json_normalize(json_data, max_level=0)['fields'])
+    expected_df = pd.json_normalize(pd.json_normalize(json_data, max_level=0)['fields'])
     return expected_df
 
 def load_actual_data():
