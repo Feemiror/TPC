@@ -89,13 +89,14 @@ args = parser.parse_args()
 
 titanic_datasets_comparison(args)
 ```
+## Running examples
+
+```
+$ (venv) python TPC.py -i examples/titanic-passengers.csv -o examples/discrepencies.csv -v -f
+```
 
 ## Running tests
-
-To run tests, simply type in command line:
 
 ```
 $ (venv) python -m pytest -v
 ```
-
-It shouldn't take longer that 10 seconds.
