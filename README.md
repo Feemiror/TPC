@@ -1,11 +1,11 @@
 
 # TPC - Titanic passengers data comparison library
-TPC is a Python library used to compare expected and actual versions of famous Titanic passengers dataset.
+TPC is a Python library used to compare expected and actual versions of famous Titanic passengers dataset.<br>
 With a little effort it can be converted to any database comparison tool.
 
 # Installation
-Project is created with Python >= 3.6
-To run this library locally, consider setting up a virtual environment using [venv](https://docs.python.org/3/library/venv.html):
+Project is created with Python >= 3.6<br>
+To run this library locally, simply clone this repo to a local directory and consider setting up a virtual environment using [venv](https://docs.python.org/3/library/venv.html):
 
 ```
  $ python venv venv
@@ -17,7 +17,7 @@ To run this library locally, consider setting up a virtual environment using [ve
 
 ## From command line
 
-Recommended way of running script is from command line with arguments:
+Recommended way of running a script is from command line with arguments:
 
 ```
 $ (venv) python TPC.py -h
@@ -36,7 +36,7 @@ $ (venv) python TPC.py -h
       -f, --floatprecision  compare floats using numpy.isclose function
 ```
 #### Input file
-Library support csv and json data input. I've made an assumption that json data will look like one exported from an API provided in tasks constrains.
+Library supports csv and json data input. I've made an assumption that json data will look like one exported from an API provided in task's constrains.
 
 #### Columns
 You can specify columns you want to analyze. To do so, provide comma-separated columns names after -c/--columns flag:
@@ -45,22 +45,22 @@ $ (venv) python TPC.py -i examples/titanic-passengers.csv -o examples/discrepenc
 ```
 
 #### PassengerID
-Like columns, you can pass passengers whose data you'd like to scan:
+Like columns, you can pass IDs of passengers whose data you'd like to scan:
 ```
 $ (venv) python TPC.py -i examples/titanic-passengers.csv -o examples/discrepencies.csv -p 90,225,44,183,518 -v
 ```
 
 #### Float precision
-API provided in task constrains sometimes produces results like 'fare = 7.8542000000000005' so I recommend using -f flag to avoid flagging irrelevant differences between floats. If the flag is raised, the comparison will take place using the `numpy.isclose` function. 
+API provided in constrains sometimes produces results like 'fare = 7.8542000000000005' so I recommend using -f flag to avoid flagging irrelevant differences between floats. If the flag is raised, the comparison will take place using the `numpy.isclose` function. 
 
 #### Excel
-Using --excel flag (or -e for short) let you see discrepencies in xlsx file with cells filled with color marking differences between expected and actual data.
+Using --excel flag (or -e for short) will let you see discrepencies in xlsx file with cells filled with color marking differences between expected and actual data.
 
 ```
 $ (venv) python TPC.py -i examples/titanic-passengers.csv -o examples/discrepencies.csv -v -f -e examples/Excel_discrepencies.xlsx
 ```
 
-Running above command will run analysis of given file and output Discrepencies.csv and Discrepencies.xlsx files in ./discrepencies/ directory for you to collect.
+Running above command will run analysis of given file and output Discrepencies.csv and Discrepencies.xlsx files in examples/ directory for you to collect.
 
 ## From python script
 
