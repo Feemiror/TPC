@@ -226,18 +226,20 @@ def titanic_datasets_comparison(args, test_flag = False):
         test_flag (bool): if True, returns json_response for easier testing
     '''
     UNIQUE_COL = "passengerid"
-    LOGGER_FILENAME = os.path.join('discrepencies','Discrepencies.csv')
     USECOLS = None
     USEIDS = None
 
-    # Setting verbosity level and overriding builtin print function
+    # Setting flags and checking files extensions
+    verbose_flag = args.verbose
     builtin_print = builtins.print
+
     def print(*args, **kwargs):
+        '''
+        Setting verbosity level and overriding builtin print function.
+        '''
         if verbose_flag:
             return builtin_print(*args, **kwargs)
 
-    # Setting flags and checking files extensions
-    verbose_flag = args.verbose
     isclose_flag = args.floatprecision
     if args.columns: USECOLS = args.columns + [UNIQUE_COL]
     if args.passengerid: USEIDS = args.passengerid
@@ -246,8 +248,8 @@ def titanic_datasets_comparison(args, test_flag = False):
     output_filename = args.outputfile.name
 
     file = args.inputfile 
-    check_arg_file_extension(file.name, ['.csv', '.json'], file_arg)
-    file_extension = os.path.splitext(file.name)[1].lower()
+    check_arg_file_extension(file.name, ['.csv', '.json'], input_file_arg)
+    input_file_extension = os.path.splitext(file.name)[1].lower()
 
     if args.excel:
         excel_flag = True
@@ -256,7 +258,7 @@ def titanic_datasets_comparison(args, test_flag = False):
     else:
         excel_flag = False
 
-    if file_extension == '.csv':
+    if input_file_extension == '.csv':
         dialect = Sniffer().sniff(file.read(1024))
         try:
             expected_df = pd.read_csv(file.name, dialect=dialect)
@@ -356,7 +358,7 @@ def titanic_datasets_comparison(args, test_flag = False):
         return Logger.errors_json
 
 parser = argparse.ArgumentParser()
-file_arg = parser.add_argument('-i', '--inputfile', required=True, help='path to CSV or JSON input file', type=argparse.FileType('r'))
+input_file_arg = parser.add_argument('-i', '--inputfile', required=True, help='path to CSV or JSON input file', type=argparse.FileType('r'))
 textout_arg = parser.add_argument('-o', '--outputfile', required=True, help='path to CSV or TXT output file', type=argparse.FileType('w'))
 excelout_arg = parser.add_argument('-e', '--excel', help='path to XLS or XLSX file in which the differences between the databases will be saved', type=argparse.FileType('w'))
 cols_arg = parser.add_argument('-c', '--columns', help='comma-separated list of columns', type=lambda s: [c.lower() for c in s.split(',')])
